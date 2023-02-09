@@ -1,10 +1,11 @@
 import { prisma } from "@/config";
 
-export async function createGame(userId: number, roomId: number) {
+export async function createGame(id: number, title: string, consoleId: number) {
   return await prisma.game.create({
     data: {
-      userId,
-      roomId,
+      id,
+      title,
+      consoleId
     }
   });
 }

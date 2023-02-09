@@ -12,7 +12,7 @@ beforeAll(async () => {
 
 const server = supertest(app);
 
-describe("POST /auth/sign-in", () => {
+describe("GET /game/*", () => {
   it("should respond with status 400 when body is not given", async () => {
     const response = await server.post("/auth/sign-in");
 

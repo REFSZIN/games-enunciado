@@ -2,7 +2,7 @@ import app, { init } from "../app";
 import faker from "@faker-js/faker";
 import httpStatus from "http-status";
 import supertest from "supertest";
-import { createUser } from "../factories";
+import { createGame ,createConsole } from "../factories";
 import { cleanDb } from "../helpers";
 
 beforeAll(async () => {

@@ -1,21 +1,25 @@
 import { PrismaClient } from "@prisma/client";
-import dayjs from "dayjs";
 const prisma = new PrismaClient();
 
 async function main() {
-  let event = await prisma.event.findFirst();
+  let event = await prisma.console.findFirst();
+  let event2 = await prisma.game.findFirst();
   if (!event) {
-    event = await prisma.event.create({
+    event = await prisma.console.create({
       data: {
-        console: "XBOX",
-        game: "SPD",
-        startsAt: dayjs().toDate(),
-        endsAt: dayjs().add(21, "days").toDate(),
+        id: 1,
+        name: "XBOX",
+      },
+    });
+    event2 = await prisma.game.create({
+      data: {
+        id: 1,
+        title: "Joguinhu",
+        consoleId: 1
       },
     });
   }
-
-  console.log({ event });
+  console.log({ event, event2 });
 }
 
 main()

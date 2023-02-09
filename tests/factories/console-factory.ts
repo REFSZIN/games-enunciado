@@ -1,10 +1,10 @@
 import { prisma } from "@/config";
 
-export async function createConsole(userId: number, roomId: number) {
+export async function createConsole(id: number, name: string ) {
   return await prisma.console.create({
     data: {
-      userId,
-      roomId,
+      id,
+      name,
     }
   });
 }
