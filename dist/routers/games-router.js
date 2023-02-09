@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const games_controller_1 = require("../controllers/games-controller");
+const schemaValidatorMiddleware_1 = require("../middlewares/schemaValidatorMiddleware");
+const game_schema_1 = require("../schemas/game-schema");
+const gamesRouter = (0, express_1.Router)();
+gamesRouter.get("/games", games_controller_1.getGames);
+gamesRouter.get("/games/:id", games_controller_1.getSpecificGame);
+gamesRouter.post("/games", (0, schemaValidatorMiddleware_1.validateSchemaMiddleware)(game_schema_1.gameSchema), games_controller_1.createGame);
+exports.default = gamesRouter;

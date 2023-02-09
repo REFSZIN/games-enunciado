@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const consoles_controller_1 = require("../controllers/consoles-controller");
+const schemaValidatorMiddleware_1 = require("../middlewares/schemaValidatorMiddleware");
+const console_schema_1 = require("../schemas/console-schema");
+const consolesRouter = (0, express_1.Router)();
+consolesRouter.get("/consoles", consoles_controller_1.getConsoles);
+consolesRouter.get("/consoles/:id", consoles_controller_1.getSpecificConsole);
+consolesRouter.post("/consoles", (0, schemaValidatorMiddleware_1.validateSchemaMiddleware)(console_schema_1.consoleSchema), consoles_controller_1.createConsole);
+exports.default = consolesRouter;
